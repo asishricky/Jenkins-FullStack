@@ -7,18 +7,12 @@ pipeline {
             steps {
                 dir('front-crudapp') {
                     sh '''
-                    export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+                    export PATH="/opt/homebrew/bin:$PATH"
 
-                    echo "Node version: $(node -v)"
-                    echo "NPM version: $(npm -v)"
+                    node -v
+                    npm -v
 
-                    rm -rf node_modules package-lock.json
                     npm install
-
-                    echo "Available npm scripts:"
-                    npm run
-
-                    echo "Running build..."
                     npm run build
                     '''
                 }
