@@ -7,7 +7,7 @@ pipeline {
             steps {
                 dir('front-crudapp') {
                     sh '''
-                    export PATH="/opt/homebrew/bin:$PATH"
+                    export PATH="/usr/local/bin:$PATH"
 
                     node -v
                     npm -v
