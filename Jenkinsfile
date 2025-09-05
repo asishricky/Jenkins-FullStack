@@ -9,10 +9,16 @@ pipeline {
                     sh '''
                     export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
-                    node -v
-                    npm -v
+                    echo "Node version: $(node -v)"
+                    echo "NPM version: $(npm -v)"
 
+                    rm -rf node_modules package-lock.json
                     npm install
+
+                    echo "Available npm scripts:"
+                    npm run
+
+                    echo "Running build..."
                     npm run build
                     '''
                 }
