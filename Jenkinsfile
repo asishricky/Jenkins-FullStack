@@ -9,6 +9,13 @@ pipeline {
                     sh '''
                     export PATH="/usr/local/bin:$PATH"
 
+                    echo "===== DEBUG: Current Directory ====="
+                    pwd
+                    echo "===== DEBUG: Files in this folder ====="
+                    ls -la
+                    echo "===== DEBUG: package.json content ====="
+                    cat package.json || echo "No package.json found!"
+
                     node -v
                     npm -v
 
@@ -23,7 +30,7 @@ pipeline {
         stage('Deploy Frontend to Tomcat') {
             steps {
                 sh '''
-           TOMCAT_DIR="/Users/asishricky/apache-tomcat-9.0.108/webapps/frontapp1"
+                TOMCAT_DIR="/Users/asishricky/apache-tomcat-9.0.108/webapps/frontapp1"
 
                 if [ -d "$TOMCAT_DIR" ]; then
                     rm -rf "$TOMCAT_DIR"
